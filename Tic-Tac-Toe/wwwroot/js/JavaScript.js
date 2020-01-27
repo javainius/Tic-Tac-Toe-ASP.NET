@@ -4,15 +4,18 @@ $(".box").on("click", function () {
         $(this).html('X').css({ backgroundColor: "#580817" });
         turn = 'o';
         var message = '';
-        var fieldId = this.id;
+        var field = [];
+        for (var i = 0; i < 9; i++) {
+            var j = "#" + i;
+            field[i] = $(j).text();
+        }
         $.post({
             type: "POST",
             url: '/TicTac/UsersTurn',
-            data: JSON.stringify(fieldId),
+            data: JSON.stringify(field),
             contentType: "application/json",
             dataType: "json",
             success: function (msg) {
-                alert(msg);
                 message = msg;
             }
         });

@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tic-Tac-Toe", "Tic-Tac-Toe\Tic-Tac-Toe.csproj", "{85D2FE4A-10F9-4FA1-A1A7-EFA488140B8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLibrary", "LogicLibrary\LogicLibrary.csproj", "{A7F45590-69F5-404E-AA0A-C4E28A807A1E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{85D2FE4A-10F9-4FA1-A1A7-EFA488140B8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{85D2FE4A-10F9-4FA1-A1A7-EFA488140B8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{85D2FE4A-10F9-4FA1-A1A7-EFA488140B8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7F45590-69F5-404E-AA0A-C4E28A807A1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7F45590-69F5-404E-AA0A-C4E28A807A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7F45590-69F5-404E-AA0A-C4E28A807A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7F45590-69F5-404E-AA0A-C4E28A807A1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
