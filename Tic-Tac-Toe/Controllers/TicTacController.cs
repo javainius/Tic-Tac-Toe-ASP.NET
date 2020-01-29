@@ -1,14 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using LogicLibrary;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
 namespace Tic_Tac_Toe.Controllers
 {
     public class TicTacController : Controller
     {
-        [HttpPost]
-        public JsonResult UsersTurn([FromBody] List<string> field)
+        private readonly GameEngine _gameValidator;
+
+        public TicTacController()
         {
-            return Json("Success"); ;
+            _gameValidator = new GameEngine();
+        }
+
+        [HttpPost]
+        public JsonResult UpdateState([FromBody] string fieldId)
+        {
+            return Json(_gameValidator.UpdateState(fieldId));
         }
     }
 }

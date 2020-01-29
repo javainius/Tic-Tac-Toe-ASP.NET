@@ -4,4 +4,14 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\GameStateDB\TicTacDB.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="CheckGrid\GameChecker.cs">
+      <CustomToolNamespace></CustomToolNamespace>
+    </Compile>
+  </ItemGroup>
+
 </Project>

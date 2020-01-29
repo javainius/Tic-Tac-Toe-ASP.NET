@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tic-Tac-Toe", "Tic-Tac-Toe\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLibrary", "LogicLibrary\LogicLibrary.csproj", "{A7F45590-69F5-404E-AA0A-C4E28A807A1E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tic-Tac-Toe.Tests", "Tic-Tac-Toe.Tests\Tic-Tac-Toe.Tests.csproj", "{A2E1800B-9B9F-4A31-A699-CC1A5953AFBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacDB", "GameStateDB\TicTacDB.csproj", "{6767B81E-384E-47AE-A6AF-D54B444ECCED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{A7F45590-69F5-404E-AA0A-C4E28A807A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7F45590-69F5-404E-AA0A-C4E28A807A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7F45590-69F5-404E-AA0A-C4E28A807A1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2E1800B-9B9F-4A31-A699-CC1A5953AFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2E1800B-9B9F-4A31-A699-CC1A5953AFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2E1800B-9B9F-4A31-A699-CC1A5953AFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2E1800B-9B9F-4A31-A699-CC1A5953AFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6767B81E-384E-47AE-A6AF-D54B444ECCED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6767B81E-384E-47AE-A6AF-D54B444ECCED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6767B81E-384E-47AE-A6AF-D54B444ECCED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6767B81E-384E-47AE-A6AF-D54B444ECCED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
