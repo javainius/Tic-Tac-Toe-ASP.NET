@@ -7,7 +7,7 @@ namespace LogicLibrary.Helpers
 {
     public static class GridChangeHelper
     {
-        public static int[,] GridTransform(this char[,] currentGrid, char symbol)
+        public static int[,] GridTransform(this char?[,] currentGrid, char symbol)
         {
             int[,] binaryGrid = new int[3, 3];
             for (int i = 0; i < 3; i++)
@@ -26,26 +26,38 @@ namespace LogicLibrary.Helpers
             }
             return binaryGrid;
         }
-        public static char[,] ToCharArray(List<GridModel> gridList)
+        public static char?[,] ToCharArray(List<GridModel> gridList)
         {
-            var currentGrid = new char[3, 3];
+            var currentGrid = new char?[3, 3];
             int listIterator = 0;
             for (int i = 0; i < 3; i++)
             {
-                currentGrid[i, 0] = char.Parse(gridList[listIterator].FirstColumn);
-                currentGrid[i, 1] = char.Parse(gridList[listIterator].SecondColumn);
-                currentGrid[i, 2] = char.Parse(gridList[listIterator].ThirdColumn);
+                if (gridList[listIterator].FirstColumn != "" && gridList[listIterator].FirstColumn != null)
+                {
+                    currentGrid[i, 0] = char.Parse(gridList[listIterator].FirstColumn);
+                }
+
+                if (gridList[listIterator].SecondColumn != "" && gridList[listIterator].SecondColumn != null)
+                {
+                    currentGrid[i, 1] = char.Parse(gridList[listIterator].SecondColumn);
+                }
+
+                if (gridList[listIterator].ThirdColumn != "" && gridList[listIterator].ThirdColumn != null)
+                {
+                    currentGrid[i, 2] = char.Parse(gridList[listIterator].ThirdColumn);
+                }
+              
                 listIterator++;
             }
 
             return currentGrid;
         }
-        public static List<GridModel> ToGridList(char[,] gridArray)
+        public static List<GridModel> ToGridList(char?[,] gridArray)
         {
-            var rows = new char[][] {
-                                    new char[] { gridArray[0, 0], gridArray[0, 1], gridArray[0, 2] },
-                                    new char[] { gridArray[1, 0], gridArray[1, 1], gridArray[1, 2] },
-                                    new char[] { gridArray[2, 0], gridArray[2, 1], gridArray[2, 2] }
+            var rows = new char?[][] {
+                                    new char?[] { gridArray[0, 0], gridArray[0, 1], gridArray[0, 2] },
+                                    new char?[] { gridArray[1, 0], gridArray[1, 1], gridArray[1, 2] },
+                                    new char?[] { gridArray[2, 0], gridArray[2, 1], gridArray[2, 2] }
             };
 
             var gridList = new List<GridModel>();

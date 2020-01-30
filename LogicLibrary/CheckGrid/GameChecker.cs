@@ -8,7 +8,7 @@ namespace CheckGrid
 {
     public static class GameChecker // Checking functions
     {
-        public static bool CheckForWin(char symbol, char [,] gameState)
+        public static bool CheckForWin(char symbol, char? [,] gameState)
         {
             var binaryGrid = gameState.GridTransform(symbol);
 
@@ -79,12 +79,11 @@ namespace CheckGrid
             }
             return false;
         }
-        public static bool IsGameStillGoing(char[,] gameState)
+        public static bool IsGameStillGoing(char?[,] gameState)
         {
             foreach (var square in gameState)
             {
-                var smth = square.ToString();
-                if (square.ToString() == "\0")
+                if (!square.HasValue)
                 {
                     return true;
                 }

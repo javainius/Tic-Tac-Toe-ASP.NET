@@ -16,7 +16,8 @@ namespace Tic_Tac_Toe.Controllers
         [HttpPost]
         public JsonResult UpdateState([FromBody] string fieldId)
         {
-            return Json(_gameValidator.UpdateState(fieldId));
+            _gameValidator.UpdateState(fieldId);
+            return Json("Json");
         }
     }
 }

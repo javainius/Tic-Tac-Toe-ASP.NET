@@ -13,7 +13,7 @@ namespace TicTacDB.Models
         public string SecondColumn { get; set; }
         public string ThirdColumn { get; set; }
         public GridModel() { }
-        public GridModel(char[] currentRow)
+        public GridModel(char?[] currentRow)
         {
             FirstColumn = currentRow[0].ToString();
             SecondColumn = currentRow[1].ToString();

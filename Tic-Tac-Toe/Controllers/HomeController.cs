@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Tic_Tac_Toe.Models;
+using TicTacDB.Repositories;
 
 namespace Tic_Tac_Toe.Controllers
 {
@@ -13,7 +14,8 @@ namespace Tic_Tac_Toe.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            var model = new TicTacViewModel(GameStateRepository.GetCurrentState());
+            return View(model);
         }
     }
 }
