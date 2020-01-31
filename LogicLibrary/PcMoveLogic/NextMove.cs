@@ -104,6 +104,7 @@ namespace LogicLibrary.PcMoveLogic
         }
         public bool IsChanceToWin(char?[,] gameState)
         {
+
             var pcSideBinaryGrid = gameState.GridTransform('O', 'X');
             if (IsMainCrossLineDangerous(pcSideBinaryGrid))
             {
