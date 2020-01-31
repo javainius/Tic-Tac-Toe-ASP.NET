@@ -26,6 +26,29 @@ namespace LogicLibrary.Helpers
             }
             return binaryGrid;
         }
+        public static int[,] GridTransform(this char?[,] currentGrid, char symbol, char negativeSymbol)
+        {
+            int[,] binaryGrid = new int[3, 3];
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (currentGrid[i, j] == symbol)
+                    {
+                        binaryGrid[i, j] = 1;
+                    }
+                    else if(currentGrid[i, j] == negativeSymbol)
+                    {
+                        binaryGrid[i, j] = -1;
+                    }
+                    else
+                    {
+                        binaryGrid[i, j] = 0;
+                    }
+                }
+            }
+            return binaryGrid;
+        }
         public static char?[,] ToCharArray(List<GridModel> gridList)
         {
             var currentGrid = new char?[3, 3];

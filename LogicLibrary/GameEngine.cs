@@ -33,21 +33,21 @@ namespace LogicLibrary
         }
         public string GetGameState()
         {
-            if (GameChecker.CheckForWin('X', _gameState))
+            if(GameChecker.CheckForWin('X', _gameState))
             {
                 GameStateRepository.SetGridToNewGame();
 
                 return "Victory";
             }
 
-            if (GameChecker.CheckForWin('O', _gameState))
+            if(GameChecker.CheckForWin('O', _gameState))
             {
                 GameStateRepository.SetGridToNewGame();
 
                 return "Defeat";
             }
 
-            if (GameChecker.IsGameStillGoing(_gameState))
+            if(GameChecker.IsGameStillGoing(_gameState))
             {
                 return "Still playing...";
             }
@@ -62,7 +62,7 @@ namespace LogicLibrary
         public char?[,] LoadGameStateFromDb()
         {
             var gameStateList = GameStateRepository.GetCurrentState();
-            if (gameStateList.Count() == 0)
+            if(gameStateList.Count() == 0)
             {
                 return new char?[3, 3];
             }
@@ -105,7 +105,7 @@ namespace LogicLibrary
                         Random rnd = new Random();
                         bool availableMove = false;
 
-                        while (!availableMove)
+                        while(!availableMove)
                         {
                             int i = rnd.Next(0, 3);
                             int j = rnd.Next(0, 3);
@@ -118,13 +118,13 @@ namespace LogicLibrary
                     }
                     else
                     {
-                        _gameState[1, 1] == 'X'
+                        _gameState[1, 1] = 'X';
                     }
                 }
                 else
                 {
-                    var binaryGrid = _gameState.GridTransform('X');
-                    if(IsMainCrossLineDangerous(binaryGrid))
+                    var playerSideBinaryGrid = _gameState.GridTransform('X');
+                    if(IsMainCrossLineDangerous(playerSideBinaryGrid))
                     {
                         if(!_gameState[0, 0].HasValue)
                         {
@@ -134,49 +134,123 @@ namespace LogicLibrary
                         {
                             _gameState[1, 1] = 'O';
                         }
-                        else 
+                        else if(!_gameState[2, 2].HasValue)
                         {
                             _gameState[2, 2] = 'O';
                         }
+                        else // means that there was danger, but the line was defended
+                        {
+
+                        }
                     }
-                    else if(IsSecondaryCrossLineDangerous(binaryGrid))
+                    else if(IsSecondaryCrossLineDangerous(playerSideBinaryGrid))
                     {
-                        if (!_gameState[3, 0].HasValue)
+                        if(!_gameState[2, 0].HasValue)
                         {
                             _gameState[2, 0] = 'O';
                         }
-                        else if (!_gameState[1, 1].HasValue)
+                        else if(!_gameState[1, 1].HasValue)
                         {
                             _gameState[1, 1] = 'O';
                         }
-                        else
+                        else if(!_gameState[0, 2].HasValue)
                         {
                             _gameState[0, 2] = 'O';
                         }
+                        else // means that there was danger, but the line was defended
+                        {
+
+                        }
                     }
-                    else if(IsFirstColumnDangerous())
+                    else if(IsFirstColumnDangerous(playerSideBinaryGrid))
                     {
 
                     }
-                    else if(IsSecondColumnDangerous())
+                    else if(IsSecondColumnDangerous(playerSideBinaryGrid))
                     {
 
                     }
-                    else if(IsThirdColumnDangerous())
+                    else if(IsThirdColumnDangerous(playerSideBinaryGrid))
                     {
 
                     }
-                    else if(IsFirstRowIsDangerous())
+                    else if(IsFirstRowDangerous(playerSideBinaryGrid))
                     {
 
                     }
-                    else if (IsSecondRowIsDangerous())
+                    else if(IsSecondRowDangerous(playerSideBinaryGrid))
                     {
 
                     }
-                    else if (IsThirdRowIsDangerous())
+                    else if(IsThirdRowDangerous(playerSideBinaryGrid))
                     {
 
+                    }
+                    else // there is no danger from player side
+                    {
+                        var pcSideBinaryGrid = _gameState.GridTransform('O');
+                        if(IsMainCrossLineDangerous(pcSideBinaryGrid))
+                        {
+                            if(!_gameState[0, 0].HasValue)
+                            {
+                                _gameState[0, 0] = 'O';
+                            }
+                            else if(!_gameState[1, 1].HasValue)
+                            {
+                                _gameState[1, 1] = 'O';
+                            }
+                            else if(!_gameState[2, 2].HasValue)
+                            {
+                                _gameState[2, 2] = 'O';
+                            }
+                            else // means that there was a danger, but the line was defended
+                            {
+
+                            }
+                        }
+                        else if(IsSecondaryCrossLineDangerous(pcSideBinaryGrid))
+                        {
+                            if(!_gameState[2, 0].HasValue)
+                            {
+                                _gameState[2, 0] = 'O';
+                            }
+                            else if(!_gameState[1, 1].HasValue)
+                            {
+                                _gameState[1, 1] = 'O';
+                            }
+                            else if(!_gameState[0, 2].HasValue)
+                            {
+                                _gameState[0, 2] = 'O';
+                            }
+                            else // means that there was danger, but the line was defended
+                            {
+
+                            }
+                        }
+                        else if(IsFirstColumnDangerous(pcSideBinaryGrid))
+                        {
+
+                        }
+                        else if(IsSecondColumnDangerous(pcSideBinaryGrid))
+                        {
+
+                        }
+                        else if(IsThirdColumnDangerous(pcSideBinaryGrid))
+                        {
+
+                        }
+                        else if(IsFirstRowDangerous(pcSideBinaryGrid))
+                        {
+
+                        }
+                        else if(IsSecondRowDangerous(pcSideBinaryGrid))
+                        {
+
+                        }
+                        else if(IsThirdRowDangerous(pcSideBinaryGrid))
+                        {
+
+                        }
                     }
                 }
             }
@@ -198,6 +272,30 @@ namespace LogicLibrary
                 return true;
             }
             return false;
+        }
+        public bool IsFirstColumnDangerous(int[,] binaryGrid)
+        {
+
+        }
+        public bool IsSecondColumnDangerous(int[,] binaryGrid)
+        {
+
+        }
+        public bool IsThirdColumnDangerous(int[,] binaryGrid)
+        {
+
+        }
+        public bool IsFirstRowDangerous(int[,] binaryGrid)
+        {
+
+        }
+        public bool IsSecondRowDangerous(int[,] binaryGrid)
+        {
+
+        }
+        public bool IsThirdRowDangerous(int[,] binaryGrid)
+        {
+
         }
     }
 }
