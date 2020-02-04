@@ -1,6 +1,8 @@
 ﻿using LogicLibrary;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using Tic_Tac_Toe.Models;
+using TicTacDB.Repositories;
 
 namespace Tic_Tac_Toe.Controllers
 {
@@ -17,7 +19,9 @@ namespace Tic_Tac_Toe.Controllers
         public JsonResult UpdateState([FromBody] string fieldId)
         {
             _gameValidator.UpdateState(fieldId);
-            return Json("Json");
+
+            var model = new TicTacViewModel(GameStateRepository.GetCurrentState());
+            return Json(model);
         }
     }
 }

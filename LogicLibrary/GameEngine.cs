@@ -6,6 +6,7 @@ using TicTacDB.Models;
 using TicTacDB.Repositories;
 using CheckGrid;
 using LogicLibrary.Helpers;
+using LogicLibrary.PcMoveLogic;
 
 namespace LogicLibrary
 {
@@ -25,11 +26,9 @@ namespace LogicLibrary
             _gameState[row, column] = 'X';
             if(GetGameState() == "Still playing...")
             {
-                PcMove("easy");
+                PcMove("hard");
                 UpdateDbState();
-            }
-            
-            
+            }   
         }
         public string GetGameState()
         {
@@ -74,56 +73,17 @@ namespace LogicLibrary
         {
             if(mode == "easy")
             {
-                Random rnd = new Random();
-                bool availableMove = false;
-
-                while(!availableMove)
-                {
-                    int i = rnd.Next(0, 3);
-                    int j = rnd.Next(0, 3);
-                    if(!_gameState[i,j].HasValue)
-                    {
-                        _gameState[i, j] = 'O';
-                        availableMove = true;
-                    }
-                }            
+                 _gameState = Move.EasyModeMove(_gameState);
             }
             else
             {
-                int userMoves = 0;
-                foreach(var square in _gameState)
+                if (GameChecker.IsItFirstMove(_gameState)) 
                 {
-                    if(square == 'X')
-                    {
-                        userMoves++;
-                    }
-                }
-                if(userMoves == 1)
-                {
-                    if(_gameState[1, 1] == 'X')
-                    {
-                        Random rnd = new Random();
-                        bool availableMove = false;
-
-                        while(!availableMove)
-                        {
-                            int i = rnd.Next(0, 3);
-                            int j = rnd.Next(0, 3);
-                            if ( i != 1 && j != 1)
-                            {
-                                _gameState[i, j] = 'O';
-                                availableMove = true;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        _gameState[1, 1] = 'X';
-                    }
+                    _gameState = Move.FirstMove(_gameState);
                 }
                 else
                 {
-                    
+                    _gameState = Move.HardModeMove(_gameState);
                 }
             }
         }
