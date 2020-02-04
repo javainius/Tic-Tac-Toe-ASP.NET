@@ -1,7 +1,18 @@
-﻿var turn = 'x';
+﻿const gameMode;
+
+function EasyMode() {
+    gameMode = 'easy';
+}
+function HardMode() {
+    gameMode = 'hard';
+}
+
 $(".box").on("click", function () {
     if ($(this).is(':empty')) {
         $(this).html('X').css({ backgroundColor: "#580817" });
+
+        var movePositions = this.id.split();
+
         $.post({
             type: "POST",
             url: '/TicTac/UpdateState',
@@ -14,7 +25,6 @@ $(".box").on("click", function () {
                 $('#01').html(table.rows[0].secondElement);
 
                 $('#02').html(table.rows[0].thirdElement);
-
 
                 $('#10').html(table.rows[1].firstElement);
 
@@ -33,12 +43,8 @@ $(".box").on("click", function () {
         });
 
     }
-    //else if ($(this).is(':empty')){
-    //    $(this).html('O').css({ backgroundColor: "#a25a01" });
-    //    turn = 'x';
-    //}
 });
-
+ChangeColors();
 
 function ChangeColors() {
     for (var i = 0; i < 3; i++) {
