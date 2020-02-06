@@ -1,4 +1,5 @@
 ﻿using LogicLibrary;
+using LogicLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using Tic_Tac_Toe.Models;
@@ -16,11 +17,12 @@ namespace Tic_Tac_Toe.Controllers
         }
 
         [HttpPost]
-        public JsonResult UpdateState([FromBody] string fieldId)
+        public JsonResult UpdateState([FromBody] UserMoveModel userMove)
         {
-            _gameValidator.UpdateState(fieldId);
+            _gameValidator.UpdateState(userMove);
 
-            var model = new TicTacViewModel(GameStateRepository.GetCurrentState());
+            var model = new TicTacViewModel(_gameValidator.GetGameState(), GameStateRepository.GetCurrentState());
+            
             return Json(model);
         }
     }

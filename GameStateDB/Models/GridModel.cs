@@ -20,4 +20,10 @@ namespace TicTacDB.Models
             ThirdColumn = currentRow[2].ToString();
         }
     }
+    [Table("GameMode")]
+    public class GameModeModel
+    {
+        public int Id { get; set; }
+        public string GameMode { get; set; }
+    }
 }

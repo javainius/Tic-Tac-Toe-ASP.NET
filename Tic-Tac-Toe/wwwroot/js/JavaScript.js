@@ -1,22 +1,20 @@
-﻿const gameMode;
-
-function EasyMode() {
-    gameMode = 'easy';
-}
-function HardMode() {
-    gameMode = 'hard';
-}
-
+﻿
 $(".box").on("click", function () {
-    if ($(this).is(':empty')) {
+    if ($(this).is(':empty') && gameMode !== null) {
         $(this).html('X').css({ backgroundColor: "#580817" });
-
-        var movePositions = this.id.split();
-
+       
+        var boxId = this.id.split();
+        var movePositions = ("" + boxId).split("");
+        var userMove = {};
+        userMove.MovePositions = movePositions.map(function (x) {
+            return parseInt(x, 10);
+        });
+        userMove.GameMode = gameMode; 
+        
         $.post({
             type: "POST",
             url: '/TicTac/UpdateState',
-            data: JSON.stringify(this.id),
+            data: JSON.stringify(userMove),
             contentType: "application/json",
             dataType: "json",
             success: function (table) {
@@ -38,7 +36,21 @@ $(".box").on("click", function () {
 
                 $('#22').html(table.rows[2].thirdElement);
 
+                checkStatus(table.Status)
                 ChangeColors();
+                var StillPlaying = false;
+                for (var i = 0; i < 3; i++) {
+                    for (var j = 0; j < 3; j++) {
+                        if ($('#' + i + j).text() === 'X') {
+                            StillPlaying = true;
+                        }
+                    }
+                }
+                if (!StillPlaying) {
+                    gameMode = null;
+
+                    NewGame();
+                }
             }
         });
 

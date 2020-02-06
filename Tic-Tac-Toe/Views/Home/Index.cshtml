@@ -1,5 +1,6 @@
 ﻿@model Tic_Tac_Toe.Models.TicTacViewModel
 <link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css">
+<script src="~/js/Modes.js"></script>
 
 <div class="game-board">
     @if (Model.Rows[0].FirstElement == "\0")
@@ -83,7 +84,17 @@
         <div class="box" id="22">@Model.Rows[2].ThirdElement</div>
     }
 </div>
+<div id="gameModes"></div>
+@if (Model.GameMode != null)
+{
+    <div id="currentMode">Game mode: @Model.GameMode</div>
+    <script>
+        gameMode = "@Model.GameMode";
+    </script>
+}
+else
+{
+    <script>NewGame();</script>
+}
 
-<input type="button" onclick="EasyMode()" class="btn btn-info easy" value="Easy" id="btnClick easy" />
 
-<input type="button" onclick="HardMode()" class="btn btn-info hard" value="Hard" id="btnClick hard" />

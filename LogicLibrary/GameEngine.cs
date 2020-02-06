@@ -7,6 +7,7 @@ using TicTacDB.Repositories;
 using CheckGrid;
 using LogicLibrary.Helpers;
 using LogicLibrary.PcMoveLogic;
+using LogicLibrary.Models;
 
 namespace LogicLibrary
 {
@@ -19,34 +20,23 @@ namespace LogicLibrary
         {
             _gameState = LoadGameStateFromDb();
         }
-        public void UpdateState(string squareId)
-        {
-            row = int.Parse(squareId[0].ToString());
-            column = int.Parse(squareId[1].ToString());
-            _gameState[row, column] = 'X';
-            if(GetGameState() == "Still playing...")
-            {
-                PcMove("hard");
-                UpdateDbState();
-            }   
-        }
         public string GetGameState()
         {
-            if(GameChecker.CheckForWin('X', _gameState))
+            if (GameChecker.CheckForWin('X', _gameState))
             {
                 GameStateRepository.SetGridToNewGame();
 
                 return "Victory";
             }
 
-            if(GameChecker.CheckForWin('O', _gameState))
+            if (GameChecker.CheckForWin('O', _gameState))
             {
                 GameStateRepository.SetGridToNewGame();
 
                 return "Defeat";
             }
 
-            if(GameChecker.IsGameStillGoing(_gameState))
+            if (GameChecker.IsGameStillGoing(_gameState))
             {
                 return "Still playing...";
             }
@@ -55,13 +45,25 @@ namespace LogicLibrary
 
             return "Draw";
         }
+        public void UpdateState(UserMoveModel userMove)
+        {
+            GameStateRepository.UpdateGameMode(new GameModeModel() { GameMode = userMove.GameMode });
 
+            row = userMove.MovePositions[0];
+            column = userMove.MovePositions[1];
+            _gameState[row, column] = 'X';
+            if (GetGameState() == "Still playing...")
+            {
+                PcMove(GameStateRepository.GetGameMode());
+                UpdateDbState();
+            }
+        }
         public void UpdateDbState() => GameStateRepository.UpdateState(GridChangeHelper.ToGridList(_gameState));
 
         public char?[,] LoadGameStateFromDb()
         {
             var gameStateList = GameStateRepository.GetCurrentState();
-            if(gameStateList.Count() == 0)
+            if (gameStateList.Count() == 0)
             {
                 return new char?[3, 3];
             }
@@ -71,13 +73,13 @@ namespace LogicLibrary
 
         public void PcMove(string mode)
         {
-            if(mode == "easy")
+            if (mode == "easy")
             {
-                 _gameState = Move.EasyModeMove(_gameState);
+                _gameState = Move.EasyModeMove(_gameState);
             }
             else
             {
-                if (GameChecker.IsItFirstMove(_gameState)) 
+                if (GameChecker.IsItFirstMove(_gameState))
                 {
                     _gameState = Move.FirstMove(_gameState);
                 }

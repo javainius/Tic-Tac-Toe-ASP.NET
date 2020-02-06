@@ -9,6 +9,7 @@ namespace GameStateDB.Contexts
     public class MainContext : DbContext
     {
         public DbSet<GridModel> Grid { get; set; }
+        public DbSet<GameModeModel> GameMode { get; set; }
         public MainContext()
             : base("data source = (localdb)\\MSSQLLocalDB; Initial Catalog = TicTacDB; integrated security = SSPI")
         {
