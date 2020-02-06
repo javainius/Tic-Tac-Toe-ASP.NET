@@ -23,6 +23,10 @@ namespace Tic_Tac_Toe.Controllers
 
             var model = new TicTacViewModel(_gameValidator.GetGameState(), GameStateRepository.GetCurrentState());
             
+            if(_gameValidator.GetGameState() != "Still playing...")
+            {
+                GameStateRepository.SetGridToNewGame();
+            }
             return Json(model);
         }
     }

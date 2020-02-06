@@ -1,16 +1,16 @@
-﻿
+﻿$('.alert').hide();
+
 $(".box").on("click", function () {
     if ($(this).is(':empty') && gameMode !== null) {
         $(this).html('X').css({ backgroundColor: "#580817" });
-       
-        var boxId = this.id.split();
-        var movePositions = ("" + boxId).split("");
+        var boxId = this.id;
+        var movePositions = ("" + boxId.split()).split("");
         var userMove = {};
         userMove.MovePositions = movePositions.map(function (x) {
             return parseInt(x, 10);
         });
-        userMove.GameMode = gameMode; 
-        
+        userMove.GameMode = gameMode;
+        sleep(500);
         $.post({
             type: "POST",
             url: '/TicTac/UpdateState',
@@ -18,6 +18,8 @@ $(".box").on("click", function () {
             contentType: "application/json",
             dataType: "json",
             success: function (table) {
+                checkStatus(table.status);
+                
                 $('#00').html(table.rows[0].firstElement);
 
                 $('#01').html(table.rows[0].secondElement);
@@ -36,21 +38,8 @@ $(".box").on("click", function () {
 
                 $('#22').html(table.rows[2].thirdElement);
 
-                //checkStatus(table.Status)
                 ChangeColors();
-                var StillPlaying = false;
-                for (var i = 0; i < 3; i++) {
-                    for (var j = 0; j < 3; j++) {
-                        if ($('#' + i + j).text() === 'X') {
-                            StillPlaying = true;
-                        }
-                    }
-                }
-                if (!StillPlaying) {
-                    gameMode = null;
-
-                    NewGame();
-                }
+                
             }
         });
 

@@ -24,14 +24,14 @@ namespace LogicLibrary
         {
             if (GameChecker.CheckForWin('X', _gameState))
             {
-                GameStateRepository.SetGridToNewGame();
+                
 
                 return "Victory";
             }
 
             if (GameChecker.CheckForWin('O', _gameState))
             {
-                GameStateRepository.SetGridToNewGame();
+                
 
                 return "Defeat";
             }
@@ -41,7 +41,7 @@ namespace LogicLibrary
                 return "Still playing...";
             }
 
-            GameStateRepository.SetGridToNewGame();
+            
 
             return "Draw";
         }
@@ -55,8 +55,8 @@ namespace LogicLibrary
             if (GetGameState() == "Still playing...")
             {
                 PcMove(GameStateRepository.GetGameMode());
-                UpdateDbState();
             }
+            UpdateDbState();
         }
         public void UpdateDbState() => GameStateRepository.UpdateState(GridChangeHelper.ToGridList(_gameState));
 

@@ -87,14 +87,30 @@
 <div id="gameModes"></div>
 @if (Model.GameMode != null)
 {
-    <div id="currentMode">Game mode: @Model.GameMode</div>
-    <script>
-        gameMode = "@Model.GameMode";
-    </script>
+    if (Model.GameMode == "hard")
+    {
+
+        <input type="button" onclick="EasyMode()" class="btn btn-info easy" value="Easy" id="btnClickEasy" />
+        <input type="button" onclick="HardMode()" class="btn btn-info hard" value="Hard" id="btnClickHard" />
+        <script>HardMode();</script>
+    }
+    else
+    {
+
+        <input type="button" onclick="EasyMode()" class="btn btn-info easy" value="Easy" id="btnClickEasy" />
+        <input type="button" onclick="HardMode()" class="btn btn-info hard" value="Hard" id="btnClickHard" />
+        <script>EasyMode();</script>
+    }
+
 }
 else
 {
-    <script>NewGame();</script>
+    <input type="button" onclick="EasyMode()" class="btn btn-info easy" value="Easy" id="btnClickEasy" />
+    <input type="button" onclick="HardMode()" class="btn btn-info hard" value="Hard" id="btnClickHard" />
 }
 
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <h1 id="gameOver"></h1>
+    <a class="newGameAnchor" asp-area="" asp-controller="Home" asp-action="Index">Play again</a>
+</div>
 

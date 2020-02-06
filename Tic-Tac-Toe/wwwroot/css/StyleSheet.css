@@ -36,3 +36,31 @@
 input[type="checkbox"][readonly] {
     pointer-events: none;
 }
+
+.alert {
+    text-align: center;
+    position: relative;
+    bottom: 500px;
+}
+
+.newGameAnchor {
+    color: black;
+}
+
+.newGameAnchor:hover {
+    color: #ffffff;
+    text-decoration: none;
+    background-color: #ef3838;
+    font-weight: bold;
+    padding-top: 6px;
+}
+.newGameAnchor {
+    color: #ffffff;
+    height: 50px;
+    background-color: #b7153a;
+    display: inline-block;
+    width: 40%;
+    border-radius: 10px;
+    padding-top: 6px;
+    font-size: 150%;
+}
