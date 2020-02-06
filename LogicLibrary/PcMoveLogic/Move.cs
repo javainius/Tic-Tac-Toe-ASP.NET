@@ -22,7 +22,7 @@ namespace LogicLibrary.PcMoveLogic
                 int[] dangerPosition = moveGenerator.DangerPosition();
                 gameState[dangerPosition[0], dangerPosition[1]] = 'O';
             }
-            else if (moveGenerator.PerspectiveMovePosition().Length != 0)
+            else if (moveGenerator.PerspectiveMovePosition() != null)
             {
                     gameState[moveGenerator.PerspectiveCoordinates[0], moveGenerator.PerspectiveCoordinates[1]] = 'O';
             }

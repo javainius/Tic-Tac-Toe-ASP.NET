@@ -36,7 +36,7 @@ $(".box").on("click", function () {
 
                 $('#22').html(table.rows[2].thirdElement);
 
-                checkStatus(table.Status)
+                //checkStatus(table.Status)
                 ChangeColors();
                 var StillPlaying = false;
                 for (var i = 0; i < 3; i++) {
