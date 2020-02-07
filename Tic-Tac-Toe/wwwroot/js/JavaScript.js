@@ -10,7 +10,7 @@ $(".box").on("click", function () {
             return parseInt(x, 10);
         });
         userMove.GameMode = gameMode;
-        sleep(500);
+       
         $.post({
             type: "POST",
             url: '/TicTac/UpdateState',

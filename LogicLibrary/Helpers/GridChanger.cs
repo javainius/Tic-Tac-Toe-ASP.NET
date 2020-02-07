@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using TicTacDB.Models;
-
+using System.Linq;
 namespace LogicLibrary.Helpers
 {
-    public static class GridChangeHelper
+    public static class GridChanger
     {
         public static int[,] GridTransform(this char?[,] currentGrid, char symbol)
         {
@@ -14,14 +14,7 @@ namespace LogicLibrary.Helpers
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (currentGrid[i, j] == symbol)
-                    {
-                        binaryGrid[i, j] = 1;
-                    }
-                    else
-                    {
-                        binaryGrid[i, j] = 0;
-                    }
+                    binaryGrid[i, j] = currentGrid[i, j] == symbol ? 1 : 0;
                 }
             }
             return binaryGrid;
@@ -33,18 +26,7 @@ namespace LogicLibrary.Helpers
             {
                 for (int j = 0; j < 3; j++)
                 {
-                    if (currentGrid[i, j] == symbol)
-                    {
-                        binaryGrid[i, j] = 1;
-                    }
-                    else if(currentGrid[i, j] == negativeSymbol)
-                    {
-                        binaryGrid[i, j] = -1;
-                    }
-                    else
-                    {
-                        binaryGrid[i, j] = 0;
-                    }
+                    binaryGrid[i, j] = currentGrid[i, j] == symbol ? 1 : currentGrid[i, j] == negativeSymbol ? -1 : 0;
                 }
             }
             return binaryGrid;
@@ -52,25 +34,23 @@ namespace LogicLibrary.Helpers
         public static char?[,] ToCharArray(List<GridModel> gridList)
         {
             var currentGrid = new char?[3, 3];
-            int listIterator = 0;
+            
             for (int i = 0; i < 3; i++)
             {
-                if (gridList[listIterator].FirstColumn != "" && gridList[listIterator].FirstColumn != null)
+                if (gridList[i].FirstColumn != "" && gridList[i].FirstColumn != null)
                 {
-                    currentGrid[i, 0] = char.Parse(gridList[listIterator].FirstColumn);
+                    currentGrid[i, 0] = char.Parse(gridList[i].FirstColumn);
                 }
 
-                if (gridList[listIterator].SecondColumn != "" && gridList[listIterator].SecondColumn != null)
+                if (gridList[i].SecondColumn != "" && gridList[i].SecondColumn != null)
                 {
-                    currentGrid[i, 1] = char.Parse(gridList[listIterator].SecondColumn);
+                    currentGrid[i, 1] = char.Parse(gridList[i].SecondColumn);
                 }
 
-                if (gridList[listIterator].ThirdColumn != "" && gridList[listIterator].ThirdColumn != null)
+                if (gridList[i].ThirdColumn != "" && gridList[i].ThirdColumn != null)
                 {
-                    currentGrid[i, 2] = char.Parse(gridList[listIterator].ThirdColumn);
+                    currentGrid[i, 2] = char.Parse(gridList[i].ThirdColumn);
                 }
-              
-                listIterator++;
             }
 
             return currentGrid;
@@ -82,14 +62,8 @@ namespace LogicLibrary.Helpers
                                     new char?[] { gridArray[1, 0], gridArray[1, 1], gridArray[1, 2] },
                                     new char?[] { gridArray[2, 0], gridArray[2, 1], gridArray[2, 2] }
             };
-
-            var gridList = new List<GridModel>();
-
-            foreach (var row in rows)
-            {
-                gridList.Add(new GridModel(row));
-            }
-            return gridList;
+            
+            return new List<GridModel> (rows.Select(row => new GridModel(row)));
         }
     }
 }

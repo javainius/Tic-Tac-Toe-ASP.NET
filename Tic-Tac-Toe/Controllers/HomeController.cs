@@ -14,7 +14,8 @@ namespace Tic_Tac_Toe.Controllers
     {
         public IActionResult Index()
         {
-            var model = new TicTacViewModel(GameStateRepository.GetCurrentState(), GameStateRepository.GetGameMode());
+            var gameRepository = new GameRepository();
+            var model = new TicTacViewModel(gameRepository.GetCurrentState(), null, gameRepository.GetGameMode());
             return View(model);
         }
     }

@@ -11,37 +11,14 @@ namespace Tic_Tac_Toe.Models
         public List<Row> Rows { get; set; }
         public string GameMode { get; set; }
         public string Status { get; set; }
-        public TicTacViewModel(List<GridModel> rows, string gameMode)
+        public TicTacViewModel(List<GridModel> rows, string status, string gameMode)
         {
-            GameMode = gameMode;
+            Status = status != null ? status : null;
+            GameMode = gameMode != null ? gameMode : null;
+
             Rows = new List<Row>();
 
-            foreach(var row in rows)
-            {
-                Rows.Add(new Row(row.FirstColumn, row.SecondColumn, row.ThirdColumn));
-            }
-        }
-        public TicTacViewModel(string status, List<GridModel> rows)
-        {
-            Status = status;
-            Rows = new List<Row>();
-
-            foreach (var row in rows)
-            {
-                Rows.Add(new Row(row.FirstColumn, row.SecondColumn, row.ThirdColumn));
-            }
-        }
-    }
-    public class Row
-    {
-        public string FirstElement { get; set; }
-        public string SecondElement { get; set; }
-        public string ThirdElement { get; set; }
-        public Row(string FirstElement, string SecondElement, string ThirdElement)
-        {
-            this.FirstElement = FirstElement;
-            this.SecondElement = SecondElement;
-            this.ThirdElement = ThirdElement;
+            Rows.AddRange(rows.Select(row => new Row(row.FirstColumn, row.SecondColumn, row.ThirdColumn)));
         }
     }
 }

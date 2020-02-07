@@ -1,8 +1,9 @@
-﻿using System;
+﻿using LogicLibrary.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace LogicLibrary.Helpers
+namespace LogicLibrary.Checkers
 {
 
     public class MoveChecker

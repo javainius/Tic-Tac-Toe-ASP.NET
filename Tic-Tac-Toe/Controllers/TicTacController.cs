@@ -1,4 +1,5 @@
-﻿using LogicLibrary;
+﻿using LogicAndDbConnection;
+using LogicLibrary;
 using LogicLibrary.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -9,24 +10,22 @@ namespace Tic_Tac_Toe.Controllers
 {
     public class TicTacController : Controller
     {
-        private readonly GameEngine _gameValidator;
-
+        private readonly GameEngine gameEngine;
+        private readonly GameApplication _gameApplication;
         public TicTacController()
         {
-            _gameValidator = new GameEngine();
+            _gameApplication = new GameApplication();
         }
 
         [HttpPost]
         public JsonResult UpdateState([FromBody] UserMoveModel userMove)
         {
-            _gameValidator.UpdateState(userMove);
+            _gameApplication.UpdateState(userMove);
 
-            var model = new TicTacViewModel(_gameValidator.GetGameState(), GameStateRepository.GetCurrentState());
-            
-            if(_gameValidator.GetGameState() != "Still playing...")
-            {
-                GameStateRepository.SetGridToNewGame();
-            }
+            var modelComponents = _gameApplication.GetViewComponents();
+
+            var model = new TicTacViewModel(modelComponents.CurrentState, modelComponents.GameStatus, null);
+
             return Json(model);
         }
     }

@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
+﻿using System.Linq;
 using TicTacDB.Models;
 using TicTacDB.Repositories;
 using CheckGrid;
@@ -14,80 +11,58 @@ namespace LogicLibrary
     public class GameEngine
     {
         private char?[,] _gameState;
+        private readonly GameRepository _gameRepository;
+        private MoveGenerator moveGenerator;
+        private GameChecker _gameChecker;
         public int row { get; set; }
         public int column { get; set; }
         public GameEngine()
         {
+            _gameRepository = new GameRepository();
             _gameState = LoadGameStateFromDb();
+            moveGenerator = new MoveGenerator(_gameState);
+            _gameChecker = new GameChecker(_gameState);
         }
-        public string GetGameState()
+        public string GetGameStatus()
         {
-            if (GameChecker.CheckForWin('X', _gameState))
-            {
-                
-
-                return "Victory";
-            }
-
-            if (GameChecker.CheckForWin('O', _gameState))
-            {
-                
-
-                return "Defeat";
-            }
-
-            if (GameChecker.IsGameStillGoing(_gameState))
-            {
-                return "Still playing...";
-            }
-
-            
-
-            return "Draw";
+            return _gameChecker.CheckForWin('X', _gameState) ? "Victory" :
+                   _gameChecker.CheckForWin('O', _gameState) ? "Defeat" :
+                   GameChecker.IsGameStillGoing(_gameState) ? "Still playing..." : "Draw";
         }
         public void UpdateState(UserMoveModel userMove)
         {
-            GameStateRepository.UpdateGameMode(new GameModeModel() { GameMode = userMove.GameMode });
+            _gameRepository.UpdateGameMode(new GameModeModel() { GameMode = userMove.GameMode });
 
             row = userMove.MovePositions[0];
             column = userMove.MovePositions[1];
             _gameState[row, column] = 'X';
-            if (GetGameState() == "Still playing...")
+            if (GetGameStatus() == "Still playing...")
             {
-                PcMove(GameStateRepository.GetGameMode());
+                PcMove(_gameRepository.GetGameMode());
             }
             UpdateDbState();
         }
-        public void UpdateDbState() => GameStateRepository.UpdateState(GridChangeHelper.ToGridList(_gameState));
+        public void UpdateDbState() => _gameRepository.UpdateState(GridChanger.ToGridList(_gameState));
 
         public char?[,] LoadGameStateFromDb()
         {
-            var gameStateList = GameStateRepository.GetCurrentState();
-            if (gameStateList.Count() == 0)
-            {
-                return new char?[3, 3];
-            }
+            var gameStateList = _gameRepository.GetCurrentState();
 
-            return GridChangeHelper.ToCharArray(gameStateList);
+            return gameStateList.Count() == 0 ? new char?[3, 3] : GridChanger.ToCharArray(gameStateList);
+
         }
 
         public void PcMove(string mode)
         {
             if (mode == "easy")
             {
-                _gameState = Move.EasyModeMove(_gameState);
+                _gameState = moveGenerator.EasyModeMove();
             }
             else
             {
-                if (GameChecker.IsItFirstMove(_gameState))
-                {
-                    _gameState = Move.FirstMove(_gameState);
-                }
-                else
-                {
-                    _gameState = Move.HardModeMove(_gameState);
-                }
+                _gameState = moveGenerator.HardModeMove();
             }
+
         }
     }
 }

@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="CheckGrid\GameChecker.cs">
+    <Compile Update="Checkers\GameChecker.cs">
       <CustomToolNamespace></CustomToolNamespace>
     </Compile>
   </ItemGroup>
