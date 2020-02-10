@@ -20,7 +20,7 @@ namespace TicTacDB.Repositories
             return gridList;
         }
 
-        public string GetGameMode() => _context.GameMode.ToList()[0].GameMode;
+        public string GetGameMode() => _context.GameMode.ToList().Count() == 0 ? null : _context.GameMode.ToList()[0].GameMode;
 
         public void UpdateState(List<GridModel> grid)
         {
@@ -31,9 +31,8 @@ namespace TicTacDB.Repositories
 
         public void UpdateGameMode(GameModeModel gameMode)
         {
-            if (IsGameModeNull())
+            if (IsGameMode())
             {
-                DeleteGameMode();
                 _context.GameMode.Add(gameMode);
             }
             _context.SaveChanges();
@@ -45,7 +44,7 @@ namespace TicTacDB.Repositories
             _context.SaveChanges();
         }
 
-        public bool IsGameModeNull() => _context.GameMode.ToList()[0].GameMode == null;
+        public bool IsGameMode() => _context.GameMode.ToList().Count() == 0;
 
         public void CleanDbGrid()
         {
@@ -56,7 +55,7 @@ namespace TicTacDB.Repositories
         public void SetGameModeToNull()
         {
             _context.GameMode.RemoveRange(_context.GameMode);
-            _context.GameMode.Add(new GameModeModel { GameMode = null });
+            
             _context.SaveChanges();
         }
 

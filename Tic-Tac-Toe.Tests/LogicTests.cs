@@ -18,11 +18,11 @@ namespace Tic_Tac_Toe.Tests
         {
             gameEngine = new GameEngine();
 
-            gameEngine.UpdateState("01");
+            //gameEngine.UpdateState("01");
 
-            Assert.AreEqual(0, gameEngine.row);
+            Assert.AreEqual(0, gameEngine.Row);
 
-            Assert.AreEqual(1, gameEngine.column);
+            Assert.AreEqual(1, gameEngine.Column);
         }
     }
 }

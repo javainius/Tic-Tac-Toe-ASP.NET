@@ -14,8 +14,7 @@ namespace LogicLibrary
         private readonly GameRepository _gameRepository;
         private readonly MoveGenerator moveGenerator;
         private readonly GameChecker _gameChecker;
-        public int row { get; set; }
-        public int column { get; set; }
+
         public GameEngine()
         {
             _gameRepository = new GameRepository();
@@ -23,18 +22,20 @@ namespace LogicLibrary
             moveGenerator = new MoveGenerator(_gameState);
             _gameChecker = new GameChecker(_gameState);
         }
+
         public string GetGameStatus()
         {
             return _gameChecker.CheckForWin('X', _gameState) ? "Victory" :
                    _gameChecker.CheckForWin('O', _gameState) ? "Defeat" :
                    GameChecker.IsGameStillGoing(_gameState) ? "Still playing..." : "Draw";
         }
+
         public void UpdateState(UserMoveModel userMove)
         {
             _gameRepository.UpdateGameMode(new GameModeModel() { GameMode = userMove.GameMode });
 
-            row = userMove.MovePositions[0];
-            column = userMove.MovePositions[1];
+            int row = userMove.MovePositions[0];
+            int column = userMove.MovePositions[1];
             _gameState[row, column] = 'X';
             if (GetGameStatus() == "Still playing...")
             {
@@ -42,6 +43,7 @@ namespace LogicLibrary
             }
             UpdateDbState();
         }
+
         public void UpdateDbState() => _gameRepository.UpdateState(GridChanger.ToGridList(_gameState));
 
         public char?[,] LoadGameStateFromDb()
@@ -52,17 +54,6 @@ namespace LogicLibrary
 
         }
 
-        public void PcMove(string mode)
-        {
-            if (mode == "easy")
-            {
-                _gameState = moveGenerator.EasyModeMove();
-            }
-            else
-            {
-                _gameState = moveGenerator.HardModeMove();
-            }
-
-        }
+        public void PcMove(string mode) => _gameState = mode == "easy" ? moveGenerator.EasyModeMove() : moveGenerator.HardModeMove();        
     }
 }

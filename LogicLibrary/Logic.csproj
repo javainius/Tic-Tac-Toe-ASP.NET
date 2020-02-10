@@ -3,10 +3,12 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <LangVersion>preview</LangVersion>
+    <AssemblyName>Logic</AssemblyName>
+    <RootNamespace>Logic</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GameStateDB\TicTacToeDB.csproj" />
+    <ProjectReference Include="..\GameStateDB\Database.csproj" />
   </ItemGroup>
 
   <ItemGroup>

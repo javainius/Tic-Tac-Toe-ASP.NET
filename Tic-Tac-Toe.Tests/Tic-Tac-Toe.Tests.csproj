@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LogicLibrary\LogicLibrary.csproj" />
-    <ProjectReference Include="..\Tic-Tac-Toe\Tic-Tac-Toe.Web.csproj" />
+    <ProjectReference Include="..\Tic-Tac-Toe\Web.csproj" />
   </ItemGroup>
 
 </Project>

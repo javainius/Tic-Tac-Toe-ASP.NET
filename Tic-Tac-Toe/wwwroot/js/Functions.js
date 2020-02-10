@@ -20,7 +20,7 @@ function HardMode() {
     document.getElementById("btnClickEasy").disabled = true;
 }
 
-function checkStatus(status) {
+function CheckStatus(status) {
     if (status !== "Still playing...") {
         document.getElementById('gameOver').innerHTML = status;
         gameOver = true;

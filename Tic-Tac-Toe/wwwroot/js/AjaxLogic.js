@@ -18,7 +18,7 @@ $(".box").on("click", function () {
             contentType: "application/json",
             dataType: "json",
             success: function (table) {
-                checkStatus(table.status);
+                CheckStatus(table.status);
                 
                 $('#00').html(table.rows[0].firstElement);
 

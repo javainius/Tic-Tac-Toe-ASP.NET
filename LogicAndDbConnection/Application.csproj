@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GameStateDB\TicTacToeDB.csproj" />
-    <ProjectReference Include="..\LogicLibrary\LogicLibrary.csproj" />
+    <ProjectReference Include="..\GameStateDB\Database.csproj" />
+    <ProjectReference Include="..\LogicLibrary\Logic.csproj" />
   </ItemGroup>
 
 </Project>
