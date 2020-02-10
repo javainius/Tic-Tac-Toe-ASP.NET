@@ -45,7 +45,7 @@ namespace CheckGrid
             }
             return false;
         }
-        public static bool IsGameStillGoing(char?[,] gameState) => gameState.Cast<char?>().ToList().Any( square => square.Equals(null));
+        public static bool IsGameStillGoing(char?[,] gameState) => gameState.Cast<char?>().ToList().Any( square => square.Equals(' '));
         public static bool IsItFirstMove(char?[,] gameState)
         {
             var gameStateInList = gameState.Cast<char?>().ToList();

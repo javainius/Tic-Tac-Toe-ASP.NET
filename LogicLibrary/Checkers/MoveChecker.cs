@@ -65,120 +65,120 @@ namespace LogicLibrary.Checkers
 
             if (IsMainCrossLineDangerous(_pcSideBinaryGrid))
             {
-                if (!_gameState[0, 0].HasValue)
+                if (_gameState[0, 0] == ' ')
                 {
                     return new int[] { 0, 0 };
                 }
-                else if (!_gameState[1, 1].HasValue)
+                else if (_gameState[1, 1] == ' ')
                 {
                     return new int[] { 1, 1 };
                 }
-                else if (!_gameState[2, 2].HasValue)
+                else if (_gameState[2, 2] == ' ')
                 {
                     return new int[] { 2, 2 };
                 }
             }
             else if (IsSecondaryCrossLineDangerous(_pcSideBinaryGrid))
             {
-                if (!_gameState[2, 0].HasValue)
+                if (_gameState[2, 0] == ' ')
                 {
                     return new int[] { 2, 0 };
                 }
-                else if (!_gameState[1, 1].HasValue)
+                else if (_gameState[1, 1] == ' ')
                 {
                     return new int[] { 1, 1 };
                 }
-                else if (!_gameState[0, 2].HasValue)
+                else if (_gameState[0, 2] == ' ')
                 {
                     return new int[] { 0, 2 };
                 }
             }
             else if (IsFirstColumnDangerous(_pcSideBinaryGrid))
             {
-                if (!_gameState[0, 0].HasValue)
+                if (_gameState[0, 0] == ' ')
                 {
                     return new int[] { 0, 0 };
                 }
-                else if (!_gameState[1, 0].HasValue)
+                else if (_gameState[1, 0] == ' ')
                 {
                     return new int[] { 1, 0 };
                 }
-                else if (!_gameState[2, 0].HasValue)
+                else if (_gameState[2, 0] == ' ')
                 {
                     return new int[] { 2, 0 };
                 }
             }
             else if (IsSecondColumnDangerous(_pcSideBinaryGrid))
             {
-                if (!_gameState[0, 1].HasValue)
+                if (_gameState[0, 1] == ' ')
                 {
                     return new int[] { 0, 1 };
                 }
-                else if (!_gameState[1, 1].HasValue)
+                else if (_gameState[1, 1] == ' ')
                 {
                     return new int[] { 1, 1 };
                 }
-                else if (!_gameState[2, 1].HasValue)
+                else if (_gameState[2, 1] == ' ')
                 {
                     return new int[] { 2, 1 };
                 }
             }
             else if (IsThirdColumnDangerous(_pcSideBinaryGrid))
             {
-                if (!_gameState[0, 2].HasValue)
+                if (_gameState[0, 2] == ' ')
                 {
                     return new int[] { 0, 2 };
                 }
-                else if (!_gameState[1, 2].HasValue)
+                else if (_gameState[1, 2] == ' ')
                 {
                     return new int[] { 1, 2 };
                 }
-                else if (!_gameState[2, 2].HasValue)
+                else if (_gameState[2, 2] == ' ')
                 {
                     return new int[] { 2, 2 };
                 }
             }
             else if (IsFirstRowDangerous(_pcSideBinaryGrid))
             {
-                if (!_gameState[0, 0].HasValue)
+                if (_gameState[0, 0] == ' ')
                 {
                     return new int[] { 0, 0 };
                 }
-                else if (!_gameState[0, 1].HasValue)
+                else if (_gameState[0, 1] == ' ')
                 {
                     return new int[] { 0, 1 };
                 }
-                else if (!_gameState[0, 2].HasValue)
+                else if (_gameState[0, 2] == ' ')
                 {
                     return new int[] { 0, 2 };
                 }
             }
             else if (IsSecondRowDangerous(_pcSideBinaryGrid))
             {
-                if (!_gameState[1, 0].HasValue)
+                if (_gameState[1, 0] == ' ')
                 {
                     return new int[] { 1, 0 };
                 }
-                else if (!_gameState[1, 1].HasValue)
+                else if (_gameState[1, 1] == ' ')
                 {
                     return new int[] { 1, 1 };
                 }
-                else if (!_gameState[1, 2].HasValue)
+                else if (_gameState[1, 2] == ' ')
                 {
                     return new int[] { 1, 2 };
                 }
             }
             else if (IsThirdRowDangerous(_pcSideBinaryGrid))
             {
-                if (!_gameState[2, 0].HasValue)
+                if (_gameState[2, 0] == ' ')
                 {
                     return new int[] { 2, 0 };
                 }
-                else if (!_gameState[2, 1].HasValue)
+                else if (_gameState[2, 1] == ' ')
                 {
                     return new int[] { 2, 1 };
                 }
-                else if (!_gameState[2, 2].HasValue)
+                else if (_gameState[2, 2] == ' ')
                 {
                     return new int[] { 2, 2 };
                 }
@@ -190,120 +190,120 @@ namespace LogicLibrary.Checkers
 
             if (IsMainCrossLineDangerous(_playerSideBinaryGrid))
             {
-                if (!_gameState[0, 0].HasValue)
+                if (_gameState[0, 0] == ' ')
                 {
                     return new int[] { 0, 0 };
                 }
-                else if (!_gameState[1, 1].HasValue)
+                else if (_gameState[1, 1] == ' ')
                 {
                     return new int[] { 1, 1 };
                 }
-                else if (!_gameState[2, 2].HasValue)
+                else if (_gameState[2, 2] == ' ')
                 {
                     return new int[] { 2, 2 };
                 }
             }
             else if (IsSecondaryCrossLineDangerous(_playerSideBinaryGrid))
             {
-                if (!_gameState[2, 0].HasValue)
+                if (_gameState[2, 0] == ' ')
                 {
                     return new int[] { 2, 0 };
                 }
-                else if (!_gameState[1, 1].HasValue)
+                else if (_gameState[1, 1] == ' ')
                 {
                     return new int[] { 1, 1 };
                 }
-                else if (!_gameState[0, 2].HasValue)
+                else if (_gameState[0, 2] == ' ')
                 {
                     return new int[] { 0, 2 };
                 }
             }
             else if (IsFirstColumnDangerous(_playerSideBinaryGrid))
             {
-                if (!_gameState[0, 0].HasValue)
+                if (_gameState[0, 0] == ' ')
                 {
                     return new int[] { 0, 0 };
                 }
-                else if (!_gameState[1, 0].HasValue)
+                else if (_gameState[1, 0] == ' ')
                 {
                     return new int[] { 1, 0 };
                 }
-                else if (!_gameState[2, 0].HasValue)
+                else if (_gameState[2, 0] == ' ')
                 {
                     return new int[] { 2, 0 };
                 }
             }
             else if (IsSecondColumnDangerous(_playerSideBinaryGrid))
             {
-                if (!_gameState[0, 1].HasValue)
+                if (_gameState[0, 1] == ' ')
                 {
                     return new int[] { 0, 1 };
                 }
-                else if (!_gameState[1, 1].HasValue)
+                else if (_gameState[1, 1] == ' ')
                 {
                     return new int[] { 1, 1 };
                 }
-                else if (!_gameState[2, 1].HasValue)
+                else if (_gameState[2, 1] == ' ')
                 {
                     return new int[] { 2, 1 };
                 }
             }
             else if (IsThirdColumnDangerous(_playerSideBinaryGrid))
             {
-                if (!_gameState[0, 2].HasValue)
+                if (_gameState[0, 2] == ' ')
                 {
                     return new int[] { 0, 2 };
                 }
-                else if (!_gameState[1, 2].HasValue)
+                else if (_gameState[1, 2] == ' ')
                 {
                     return new int[] { 1, 2 };
                 }
-                else if (!_gameState[2, 2].HasValue)
+                else if (_gameState[2, 2] == ' ')
                 {
                     return new int[] { 2, 2 };
                 }
             }
             else if (IsFirstRowDangerous(_playerSideBinaryGrid))
             {
-                if (!_gameState[0, 0].HasValue)
+                if (_gameState[0, 0] == ' ')
                 {
                     return new int[] { 0, 0 };
                 }
-                else if (!_gameState[0, 1].HasValue)
+                else if (_gameState[0, 1] == ' ')
                 {
                     return new int[] { 0, 1 };
                 }
-                else if (!_gameState[0, 2].HasValue)
+                else if (_gameState[0, 2] == ' ')
                 {
                     return new int[] { 0, 2 };
                 }
             }
             else if (IsSecondRowDangerous(_playerSideBinaryGrid))
             {
-                if (!_gameState[1, 0].HasValue)
+                if (_gameState[1, 0] == ' ')
                 {
                     return new int[] { 1, 0 };
                 }
-                else if (!_gameState[1, 1].HasValue)
+                else if (_gameState[1, 1] == ' ')
                 {
                     return new int[] { 1, 1 };
                 }
-                else if (!_gameState[1, 2].HasValue)
+                else if (_gameState[1, 2] == ' ')
                 {
                     return new int[] { 1, 2 };
                 }
             }
             else if (IsThirdRowDangerous(_playerSideBinaryGrid))
             {
-                if (!_gameState[2, 0].HasValue)
+                if (_gameState[2, 0] == ' ')
                 {
                     return new int[] { 2, 0 };
                 }
-                else if (!_gameState[2, 1].HasValue)
+                else if (_gameState[2, 1] == ' ')
                 {
                     return new int[] { 2, 1 };
                 }
-                else if (!_gameState[2, 2].HasValue)
+                else if (_gameState[2, 2] == ' ')
                 {
                     return new int[] { 2, 2 };
                 }

@@ -1,88 +1,26 @@
 ﻿@model Tic_Tac_Toe.Models.TicTacViewModel
 <link rel="stylesheet" type="text/css" href="~/css/StyleSheet.css">
-<script src="~/js/Modes.js"></script>
+<script src="~/js/Functions.js"></script>
 
 <div class="game-board">
-    @if (Model.Rows[0].FirstElement == "\0")
-    {
-        <div class="box" id="00"></div>
-    }
-    else
-    {
-        <div class="box" id="00">@Model.Rows[0].FirstElement</div>
-    }
-
-    @if (Model.Rows[0].SecondElement == "\0")
-    {
-        <div class="box" id="01"></div>
-    }
-    else
-    {
-        <div class="box" id="01">@Model.Rows[0].SecondElement</div>
-    }
-
-    @if (Model.Rows[0].ThirdElement == "\0")
-    {
-        <div class="box" id="02"></div>
-    }
-    else
-    {
-        <div class="box" id="02">@Model.Rows[0].ThirdElement</div>
-    }
-
-    @if (Model.Rows[1].FirstElement == "\0")
-    {
-        <div class="box" id="10"></div>
-    }
-    else
-    {
-        <div class="box" id="10">@Model.Rows[1].FirstElement</div>
-    }
-
-    @if (Model.Rows[1].SecondElement == "\0")
-    {
-        <div class="box" id="11"></div>
-    }
-    else
-    {
-        <div class="box" id="11">@Model.Rows[1].SecondElement</div>
-    }
-
-    @if (Model.Rows[1].ThirdElement == "\0")
-    {
-        <div class="box" id="12"></div>
-    }
-    else
-    {
-        <div class="box" id="12">@Model.Rows[1].ThirdElement</div>
-    }
-
-    @if (Model.Rows[2].FirstElement == "\0")
-    {
-        <div class="box" id="20"></div>
-    }
-    else
-    {
-        <div class="box" id="20">@Model.Rows[2].FirstElement</div>
-    }
-
-    @if (Model.Rows[2].SecondElement == "\0")
-    {
-        <div class="box" id="21"></div>
-    }
-    else
-    {
-        <div class="box" id="21">@Model.Rows[2].SecondElement</div>
-    }
-
-    @if (Model.Rows[2].ThirdElement == "\0")
-    {
-        <div class="box" id="22"></div>
-    }
-    else
-    {
-        <div class="box" id="22">@Model.Rows[2].ThirdElement</div>
-    }
+    
+    <div class="box" id="00">@Model.Rows[0].FirstElement</div>
+    
+    <div class="box" id="01">@Model.Rows[0].SecondElement</div>
+    
+    <div class="box" id="02">@Model.Rows[0].ThirdElement</div>
+    
+    <div class="box" id="10">@Model.Rows[1].FirstElement</div>
+    
+    <div class="box" id="11">@Model.Rows[1].SecondElement</div>
+   
+    <div class="box" id="12">@Model.Rows[1].ThirdElement</div>
+    
+    <div class="box" id="20">@Model.Rows[2].FirstElement</div>
+    
+    <div class="box" id="21">@Model.Rows[2].SecondElement</div>
+    
+    <div class="box" id="22">@Model.Rows[2].ThirdElement</div>
 </div>
 <div id="gameModes"></div>
 @if (Model.GameMode != null)

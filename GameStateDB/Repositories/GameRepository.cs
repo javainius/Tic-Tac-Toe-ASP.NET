@@ -64,13 +64,14 @@ namespace TicTacDB.Repositories
         {
             CleanDbGrid();
             SetGameModeToNull();
+
             for (int i = 0; i < 3; i++)
             {
                 _context.Grid.Add(new GridModel()
                 {
-                    FirstColumn = null,
-                    SecondColumn = null,
-                    ThirdColumn = null
+                    FirstColumn = " ",
+                    SecondColumn = " ",
+                    ThirdColumn = " "
                 });
             }
             _context.SaveChanges();

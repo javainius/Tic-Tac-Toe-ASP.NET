@@ -51,6 +51,9 @@ namespace LogicLibrary.Helpers
                 {
                     currentGrid[i, 2] = char.Parse(gridList[i].ThirdColumn);
                 }
+                currentGrid[i, 0] = char.Parse(gridList[i].FirstColumn);
+                currentGrid[i, 1] = char.Parse(gridList[i].SecondColumn);
+                currentGrid[i, 2] = char.Parse(gridList[i].ThirdColumn);
             }
 
             return currentGrid;

@@ -15,7 +15,7 @@ namespace LogicLibrary.GameModes
             {
                 int i = rnd.Next(0, 3);
                 int j = rnd.Next(0, 3);
-                if (!gameState[i, j].HasValue)
+                if (gameState[i, j] == ' ')
                 {
                     gameState[i, j] = 'O';
                     availableMove = true;

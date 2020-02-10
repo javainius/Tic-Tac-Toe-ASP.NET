@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <LangVersion>preview</LangVersion>
-    <RootNamespace>Tic_Tac_Toe</RootNamespace>
+    <RootNamespace>Tic-Tac-Toe.Web</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\LogicAndDbConnection\TicTacToeApplication.csproj" />
     <ProjectReference Include="..\LogicLibrary\LogicLibrary.csproj" />
   </ItemGroup>
 

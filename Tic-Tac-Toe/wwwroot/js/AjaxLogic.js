@@ -1,7 +1,7 @@
 ﻿$('.alert').hide();
 
 $(".box").on("click", function () {
-    if ($(this).is(':empty') && gameMode !== null) {
+    if ($(this).text() === ' ' && gameMode !== null && !gameOver) {
         $(this).html('X').css({ backgroundColor: "#580817" });
         var boxId = this.id;
         var movePositions = ("" + boxId.split()).split("");
@@ -13,7 +13,7 @@ $(".box").on("click", function () {
        
         $.post({
             type: "POST",
-            url: '/TicTac/UpdateState',
+            url: '/Home/UpdateState',
             data: JSON.stringify(userMove),
             contentType: "application/json",
             dataType: "json",
@@ -47,18 +47,3 @@ $(".box").on("click", function () {
 });
 ChangeColors();
 
-function ChangeColors() {
-    for (var i = 0; i < 3; i++) {
-        for (var j = 0; j < 3; j++) {
-            if ($('#' + i + j).text() === 'X') {
-                $('#' + i + j).css({ backgroundColor: "#580817" });
-            }
-            else if ($('#' + i + j).text() === 'O') {
-                $('#' + i + j).css({ backgroundColor: "#a25a01" });
-            }
-            else {
-                $('#' + i + j).css({ backgroundColor: "#34495e" });
-            }
-        }
-    }
-}

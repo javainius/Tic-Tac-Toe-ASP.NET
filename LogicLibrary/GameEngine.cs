@@ -12,8 +12,8 @@ namespace LogicLibrary
     {
         private char?[,] _gameState;
         private readonly GameRepository _gameRepository;
-        private MoveGenerator moveGenerator;
-        private GameChecker _gameChecker;
+        private readonly MoveGenerator moveGenerator;
+        private readonly GameChecker _gameChecker;
         public int row { get; set; }
         public int column { get; set; }
         public GameEngine()
