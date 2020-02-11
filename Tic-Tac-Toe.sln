@@ -3,15 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tic-Tac-Toe.Web", "Tic-Tac-Toe\Tic-Tac-Toe.Web.csproj", "{85D2FE4A-10F9-4FA1-A1A7-EFA488140B8A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Tic-Tac-Toe\Web.csproj", "{85D2FE4A-10F9-4FA1-A1A7-EFA488140B8A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogicLibrary", "LogicLibrary\LogicLibrary.csproj", "{A7F45590-69F5-404E-AA0A-C4E28A807A1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Logic", "LogicLibrary\Logic.csproj", "{A7F45590-69F5-404E-AA0A-C4E28A807A1E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tic-Tac-Toe.Tests", "Tic-Tac-Toe.Tests\Tic-Tac-Toe.Tests.csproj", "{A2E1800B-9B9F-4A31-A699-CC1A5953AFBC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "GameStateDB\Database.csproj", "{6767B81E-384E-47AE-A6AF-D54B444ECCED}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TicTacToeDB", "GameStateDB\TicTacToeDB.csproj", "{6767B81E-384E-47AE-A6AF-D54B444ECCED}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeApplication", "LogicAndDbConnection\TicTacToeApplication.csproj", "{7ED316E1-A236-4F13-B12F-4F18A14D0232}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "LogicAndDbConnection\Application.csproj", "{7ED316E1-A236-4F13-B12F-4F18A14D0232}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,10 +25,6 @@ Global
 		{A7F45590-69F5-404E-AA0A-C4E28A807A1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A7F45590-69F5-404E-AA0A-C4E28A807A1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A7F45590-69F5-404E-AA0A-C4E28A807A1E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A2E1800B-9B9F-4A31-A699-CC1A5953AFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A2E1800B-9B9F-4A31-A699-CC1A5953AFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A2E1800B-9B9F-4A31-A699-CC1A5953AFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A2E1800B-9B9F-4A31-A699-CC1A5953AFBC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6767B81E-384E-47AE-A6AF-D54B444ECCED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6767B81E-384E-47AE-A6AF-D54B444ECCED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6767B81E-384E-47AE-A6AF-D54B444ECCED}.Release|Any CPU.ActiveCfg = Release|Any CPU
